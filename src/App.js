@@ -9,6 +9,7 @@ import Budget from './components/Budget';
 
 
 import { AppProvider } from './context/AppContext';
+import Remaining from './components/Remaining';
 const App = () => {
     return (
         <AppProvider>
@@ -24,6 +25,9 @@ const App = () => {
 
                         {
                             /* Add Remaining component here*/
+                            <div className='col-sm'>
+                                <Remaining />
+                            </div>
                         }        
 
                         {
