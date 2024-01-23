@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
+import { CurrencyContext } from '../context/Context';
+
 
 const AllocationForm = (props) => {
-    const { dispatch,remaining  } = useContext(AppContext);
-
+    const { dispatch,remaining } = useContext(AppContext);
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
     const [action, setAction] = useState('');
+    const {moola} = useContext(CurrencyContext);
 
     const submitEvent = () => {
 
@@ -58,15 +60,17 @@ const AllocationForm = (props) => {
                         <option defaultValue value="Add" name="Add">Add</option>
                 <option value="Reduce" name="Reduce">Reduce</option>
                   </select>
-
+                    <div className="input-group-prepend">
+                        <label className="input-group-text" htmlFor="cost" style={{ marginLeft: '2rem' }}>{moola}</label>
+                    </div>
                     <input
                         required='required'
                         type='number'
                         id='cost'
                         value={cost}
-                        style={{ marginLeft: '2rem' , size: 10}}
+                        style={{size: 10}}
                         onChange={(event) => setCost(event.target.value)}>
-                        </input>
+                    </input>
 
                     <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
                         Save
